@@ -34,7 +34,7 @@
 
 - Giải mã (Decrypt) là quy trình ngược lại so với mã hóa, tức là lấy dữ liệu được mã hóa và chuyển đổi lại thành dữ liệu mà con người hoặc máy tính có thể đọc và hiểu. Thuật ngữ này có thể được sử dụng để mô tả phương pháp giải mã dữ liệu theo cách thủ công hoặc giải mã dữ liệu bằng các mã hoặc khóa thích hợp. Dữ liệu có thể được mã hóa để khiến ai đó khó lấy cắp thông tin. Một số công ty cũng mã hóa dữ liệu để bảo vệ chung cho dữ liệu công ty và bí mật thương mại. Nếu dữ liệu này cần có thể xem được, nó có thể yêu cầu giải mã.
 
-- Một hệ mật mã là một bộ gồm 5 thành phần ($\mathcal{P}$, $\mathcal{C}$, $\mathcal{K}$, $\mathcal{E}$, $\mathcal{D}$), trong đó :
+- Một hệ mật mã là một bộ gồm 5 thành phần ( $\mathcal{P}$ , $\mathcal{C}$, $\mathcal{K}$, $\mathcal{E}$, $\mathcal{D}$ ), trong đó :
 - $\mathcal{P}$ là tập hữu hạn các thông báo rõ có thể
 - $\mathcal{C}$ là tập hữu hạn các bản mã tương ứng
 - $\mathcal{K}$ là tập hữu hạn các khóa có thể (hay được gọi là không gian khóa)
