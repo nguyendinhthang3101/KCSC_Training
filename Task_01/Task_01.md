@@ -39,7 +39,7 @@
 - $\mathcal{C}$ là tập hữu hạn các bản mã tương ứng
 - $\mathcal{K}$ là tập hữu hạn các khóa có thể (hay được gọi là không gian khóa)
 - $\mathcal{E}$ là tập các quy tắc mã hóa, tương ứng với một $k \in \mathcal{K}$
-- $\mathcal{D}$ là tập tất cả các quy tắc giải mã, tương ứng với mỗi quy tắc mã $E_{k} \in \mathcal{E}$. Thực tế, $\mathcal{D}$ là tập tất cả các hàm ngược dk của hàm mã hóa $E_{k} \in \mathcal{E}$
+- $\mathcal{D}$ là tập tất cả các quy tắc giải mã, tương ứng với mỗi quy tắc mã $E_{k} \in \mathcal{E}$. Thực tế, $\mathcal{D}$ là tập tất cả các hàm ngược $D_{k}$ của hàm mã hóa $E_{k} \in \mathcal{E}$
 
 #### 5. Symmetric/Asymmetric
 - Symmetric
