@@ -19,12 +19,15 @@
     + Trong phần này, chúng ta sẽ tìm hiểu cách mã hóa với public key $(n, e)$ và giải mã với private key $(n, d)$.
 
     + Nếu chúng ta có bản rõ $m$, chúng ta cần chuyển nó thành một số tự nhiên m trong khoảng $(0, n)$ sao cho $m, n$ nguyên tố cùng nhau. Việc này rất dễ dàng thực hiện bằng cách thêm một các kỹ thuật padding. Tiếp theo, chúng ta sẽ má hóa $m$, thành $c$ như sau:
-    $$ c \equiv m^{e} \bmod n $$
+    $$c \equiv m^{e} \bmod n$$
     + Sau đó giá trị c sẽ được chuyển cho người nhận. Ở phía người nhận, họ sẽ giải mã từ c để lấy được m như sau:
     + $$c^{d} \equiv m^{ed} \equiv m \bmod n$$
     + vd: 
+    
     $$ p = 5, q = 7$$
+    
     $$ n = p \times q = 35$$
+    
     $$ \phi(n) = 24$$
     + Chúng ta chọn $e = 5$ vì $gcd(5, 24) = 1$, cuối cùng tính $d = e^{-1} \bmod \phi(n) = 29$
     + Giả sử $m = 32$, chúng ta sẽ mã hóa m và thu được:
@@ -46,7 +49,7 @@
 
 - Trong đó đã bao gồm rất nhiều cách tấn công (Weak public key factorization, Wiener’s attack, Hastad’s attack, Small q, Common factor between ciphertext and modulus attack, Fermat’s factorisation for close p and q, Gimmicky Primes method, Past CTF Primes method, Self-Initializing Quadratic Sieve,…)
 
-- Trong bài viết này chúng ta sẽ tìm hiểu các cách tấn công:𝐒𝐦𝐚𝐥𝐥𝐦𝐨𝐝𝐮𝐥𝐮𝐬, 𝐂𝐨𝐦𝐦𝐨𝐧 𝐦𝐨𝐝𝐮𝐥𝐮𝐬, 𝐇𝐚𝐬𝐭𝐚𝐝’𝐬 𝐛𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭 𝐚𝐭𝐭𝐚𝐜𝐤, 𝐂𝐮𝐛𝐞-𝐫𝐨𝐨𝐭 𝐚𝐭𝐭𝐚𝐜𝐤, 𝐖𝐢𝐞𝐧𝐞𝐫’𝐬 𝐚𝐭𝐭𝐚𝐜𝐤, 𝐁𝐥𝐢𝐧𝐝𝐢𝐧𝐠 𝐚𝐭𝐭𝐚𝐜𝐤.
+- Trong bài viết này chúng ta sẽ tìm hiểu các cách tấn công: 𝐒𝐦𝐚𝐥𝐥𝐦𝐨𝐝𝐮𝐥𝐮𝐬, 𝐂𝐨𝐦𝐦𝐨𝐧 𝐦𝐨𝐝𝐮𝐥𝐮𝐬, 𝐇𝐚𝐬𝐭𝐚𝐝’𝐬 𝐛𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭 𝐚𝐭𝐭𝐚𝐜𝐤, 𝐂𝐮𝐛𝐞-𝐫𝐨𝐨𝐭 𝐚𝐭𝐭𝐚𝐜𝐤, 𝐖𝐢𝐞𝐧𝐞𝐫’𝐬 𝐚𝐭𝐭𝐚𝐜𝐤, 𝐁𝐥𝐢𝐧𝐝𝐢𝐧𝐠 𝐚𝐭𝐭𝐚𝐜𝐤.
 
   - a. Small modulus
     - Lỗ hổng: số $n$ nhỏ. Giả sử số $n$ trong public key quá nhỏ thì ta có thể dễ dàng phân tích được $p$ và $q$ bằng các công cụ online như factordb http://factordb.com/ hoặc https://www.alpertron.com.ar/ECM.HTM. Từ 2 số $p$ và $q$ ta có thể tính được $\phi(n), d$ và giải mã.
@@ -54,7 +57,7 @@
     - Lỗ hổng: dùng cùng một số $n$. Giả sử Alice và Bob dùng cùng một số $n$ để tạo các key, như vậy, $(n, e_{1})$ là public key của Alice và $(n, e_{2})$ là public key của Bob với $gcd(e1, e2) = 1$. Chris gửi cùng một số m cho cả Alice và Bob, tức $c_{1} = m^{e_{1}} \bmod n, c_{2} = m^{e_{2}} \bmod n$.
 
     - Giả sử Eve muốn biết số m mà Chris đã gửi cho Alice và Bob. Do $gcd(e_{1}, e_{2}) = 1$ nên sẽ tồn tại 2 số $r, s$ sao cho $e_{1}r + e_{2}s = 1$. Khi đó Eve có thể tính được $m$ bằng cách tính $c_{1}^rc_{2}^s ≡ (m^{e_{1}})^r(m^{e_{2}})^s ≡ m^{e_{1}r + e_{2}s} ≡ m \bmod n$.
-  - c. Hastad's broadcast attack(Small CRT-exponent): 
+  - c. Hastad's broadcast attack (Small CRT-exponent): 
     - Lỗ hổng: số $e$ nhỏ và bằng số người nhận. Giả sử Alice gửi số $m$ cho 3 người Bob, Chris và David, public exponent của mỗi người là $e_{1} = e_{2} = e_{3} = 3$ và tất cả các số modulus $n_{i}$ đều đôi một coprime. Nói cách khác, $c_{1} ≡ m^{3} \bmod n_{1}, c_{2} ≡ m^{3} \bmod n_{2}, c_{3} ≡ m^{3} \bmod n_{3}$. Khi đó Eve có thể đoán được $m$ bằng cách áp dụng định lý thặng dư Trung Hoa (Chinese Remainder Theorem – CRT):
     - Do $n_{1}, n_{2}, n_{3}$ đôi một coprime, ta có hệ:  
         $$m^3 ≡ c_{1} \bmod n_{1}$$
@@ -64,7 +67,7 @@
     
     - Từ đó Eve có thể tính được số $m^{3} \bmod n_{1}.n_{2}.n_{3}$, và tính được số $m$ bằng cách tính căn bậc $3 \bmod n_{1}.n_{2}.n_{3}$
 
-  - d. Blinding attack(chosen ciphertext attack):
+  - d. Blinding attack (chosen ciphertext attack):
     - Lỗ hổng: dùng private key để kí mà không kiểm tra.
     - Alice và Bob đang giao dịch với nhau và Bob đang dùng public key $(n, e)$, và private key $(n, d)$. Mỗi giao dịch là một string, ví dụ “pay chris 1 mil”, được chuyển thành hex string 7061792063687269732031206d696c, rồi chuyển thành một số decimal 583514238518816339477773016219085164. Khi Bob muốn Alice thực thi một giao dịch là số $m$ nào đó, thì Bob phải dùng private key của mình để kí lên giao dịch đó bằng cách tính $c ≡ m^{d} \bmod n$ rồi gửi cho Alice. Alice sẽ dùng public key của Bob để tính số $m ≡ c^{e} \bmod n$, nếu số $m$ có thể đọc được thì tức là private key đúng và danh tính của Bob được xác minh. Tuy nhiên, Bob lại rất ngây thơ và dùng cả cặp public key – private key của mình để kí mọi thứ mình nhận được.
     - Giả sử Chris muốn mạo danh Bob để gửi một giao dịch bất chính $m$ nào đó cho Alice, nhưng Chris lại không có private key của Bob để kí lên giao dịch đó. Dĩ nhiên khi Chris gửi số $m$ cho Bob, Bob sẽ nghi ngờ và không kí lên đó. Tuy nhiên, Chris hoàn toàn có thể lấy được số $m^{d} \bmod n$ từ Bob (giao dịch bất chính có chữ kí) mà không khiến Bob nghi ngờ.
@@ -78,21 +81,28 @@
     - Nếu thỏa mãn các điều kiện trên (nhận biết thông qua việc đề cho $e$ rất lớn), ta có thể dễ dàng tìm được $d$ và phá vỡ toàn bộ hệ thống mã hóa. 
     - Chứng minh:
         - Phép chứng minh sử dụng tính chất của liên phân số. Vì $ed ≡ 1 \bmod \phi(n)$ nên tồn tại một số nguyên $k$ sao cho $ed - k\phi(n) = 1$. Vì vậy:
+        
         $$
             \left|\frac{e}{\phi(n)}-\frac{k}{d}\right| = \frac{1}{d\phi(n)}
         $$
+        
         - Do đó $\frac{k}{d} ≈ \frac{e}{\phi(n)}$. Ta không biết $\phi(n)$ nhưng có thể dùng n để xấp xỉ. Thật vậy, $\phi(n) = n-p-q+1$ và $p+q-1 < 3\sqrt{n}$ nên $n-\phi(n) < 3\sqrt{n}$. Sử dụng $n$ thay cho $\phi(n)$ ta thu được:
+        
         $$
             \left|\frac{e}{n}-\frac{k}{d}\right| = \left| \frac{ed-k\phi(n)-kn +k\phi(n)}{nd}\right|
             = \left|\frac{1-k(n-\phi(n))}{nd}\right| \leq \left|\frac{3k\sqrt{n}}{nd}\right| = \frac{3k}{d\sqrt{n}}
         $$
 
         - Vì $k < d < \frac{1}{3}n^{\frac{1}{4}}$ nên ta được:
+        
         $$
             \left|\frac{e}{n}-\frac{k}{d}\right| \leq  \frac{1}{dn^{\frac{1}{4}}} < \frac{1}{2d^2}
         $$
+        
         - Từ đó, áp dụng định lý về dãy hội tụ liên phân số, ta tìm trong dãy hội tụ của khai triển liên phân số $\frac{e}{n}$ sẽ tìm được $\frac{k}{d}$. Bằng cách thử từng cặp $\frac{k}{d}$ này, ta tính $\phi(n) = \frac{ed-1}{k}$. Lúc này ta có:
+        
         $$
         p+q = n-\phi(n)+1 \text{ và } \text{ } pq = n
         $$
+        
         - Dùng định lý Vi-et đảo tính được $p, q$. Xác nhận lại $pq = n$ để tìm ra cặp $\frac{k}{d}$ đúng. Tìm được $p, q$ sẽ tính được $d$.
