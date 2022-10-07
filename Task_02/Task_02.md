@@ -54,7 +54,7 @@
   - a. Small modulus
     - Lỗ hổng: số $n$ nhỏ. Giả sử số $n$ trong public key quá nhỏ thì ta có thể dễ dàng phân tích được $p$ và $q$ bằng các công cụ online như factordb http://factordb.com/ hoặc https://www.alpertron.com.ar/ECM.HTM. Từ 2 số $p$ và $q$ ta có thể tính được $\phi(n), d$ và giải mã.
   - b. Common modolus
-    - Lỗ hổng: dùng cùng một số $n$. Giả sử Alice và Bob dùng cùng một số $n$ để tạo các key, như vậy, $(n, e_{1})$ là public key của Alice và $(n, e_{2})$ là public key của Bob với $gcd(e1, e2) = 1$. Chris gửi cùng một số m cho cả Alice và Bob, tức $c_{1} = m^{e_{1}} \bmod n, c_{2} = m^{e_{2}} \bmod n$.
+    - Lỗ hổng: dùng cùng một số $n$. Giả sử Alice và Bob dùng cùng một số $n$ để tạo các key, như vậy, $(n, e_{1})$ là public key của Alice và $(n, e_{2})$ là public key của Bob với $gcd(e_{1}, e_{2}) = 1$. Chris gửi cùng một số m cho cả Alice và Bob, tức $c_{1} = m^{e_{1}} \bmod n, c_{2} = m^{e_{2}} \bmod n$.
 
     - Giả sử Eve muốn biết số m mà Chris đã gửi cho Alice và Bob. Do $gcd(e_{1}, e_{2}) = 1$ nên sẽ tồn tại 2 số $r, s$ sao cho $e_{1}r + e_{2}s = 1$. Khi đó Eve có thể tính được $m$ bằng cách tính $c_{1}^rc_{2}^s ≡ (m^{e_{1}})^r(m^{e_{2}})^s ≡ m^{e_{1}r + e_{2}s} ≡ m \bmod n$.
   - c. Hastad's broadcast attack (Small CRT-exponent): 
