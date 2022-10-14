@@ -126,22 +126,16 @@ c2 = 336451883751354691491600586260469051824323602281314352263447270232611377935
 
 - Ta có:
 
-$$
-c_{1} = m^{e_{1}} \bmod n
-$$
-$$
-c_{2} = m^{e_{2}} \bmod n
-$$
-Sau đó tính $gcd(e_{1},e_{2})=d$, và tồn tại một cặp số $a, b$ sao cho:
+ $$c_{1} = m^{e_{1}} \bmod n$$
 
-$$
-e_{1}a+e_{2}b=d
-$$
+ $$c_{2} = m^{e_{2}} \bmod n$$
+
+- Sau đó tính $gcd(e_{1},e_{2})=d$, và tồn tại một cặp số $a, b$ sao cho:
+
+ $$e_{1}a+e_{2}b=d$$
 
 - Khi đó:
-$$
-c_{1}c_{2} = (m^{e_{1}})^{a}(m^{e_{2}})^{b} = m^{e_{1}a+e_{2}b} = m^{d}
-$$
+ $$c_{1}c_{2} = (m^{e_{1}})^{a}(m^{e_{2}})^{b} = m^{e_{1}a+e_{2}b} = m^{d}$$
 
 - Từ đó chúng ta sẽ thu được flag một cách dễ dàng:
 
@@ -193,9 +187,7 @@ $$
 $$
 
 - Server sẽ thực hiện decrypt:
-$$
-h = (cr^{e}) \bmod n = (m^{e}r^{e})^{d} = (m^{ed}r^{ed}) \bmod n = mr \bmod n 
-$$
+ $$h = (cr^{e}) \bmod n = (m^{e}r^{e})^{d} = (m^{ed}r^{ed}) \bmod n = mr \bmod n $$
 
 $$
 \implies m = \frac{h}{r} \bmod n
@@ -435,6 +427,7 @@ $$gcd(n_{2}, n_{3}) \neq 1$$
 - Điều này chỉ xảy ra khi từng cặp n dùng chung 1 số nguyên tố p nào đó, ý tưởng của bài này là:
 
 $$p_{chung} = gcd(n_{1},n_{2})$$
+
 $$\phi(n_1) = (p_{chung}-1)*(\frac{n_1}{p_{chung}}-1)$$
 
 - Từ đó tính ra phi và suy ra flag:
