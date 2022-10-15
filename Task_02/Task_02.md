@@ -54,9 +54,16 @@
   - a. Small modulus
     - Lỗ hổng: số $n$ nhỏ. Giả sử số $n$ trong public key quá nhỏ thì ta có thể dễ dàng phân tích được $p$ và $q$ bằng các công cụ online như factordb http://factordb.com/ hoặc https://www.alpertron.com.ar/ECM.HTM. Từ 2 số $p$ và $q$ ta có thể tính được $\phi(n), d$ và giải mã.
   - b. Common modolus
-    - Lỗ hổng: dùng cùng một số $n$. Giả sử Alice và Bob dùng cùng một số $n$ để tạo các key, như vậy, $(n, e_{1})$ là public key của Alice và $(n, e_{2})$ là public key của Bob với $gcd(e_{1}, e_{2}) = 1$. Chris gửi cùng một số m cho cả Alice và Bob, tức $c_{1} = m^{e_{1}} \bmod n, c_{2} = m^{e_{2}} \bmod n$.
+    - Kịch bản 1: Internal Attack
+        - Giả sử bạn là 1 thành viên của hệ thống mạng. Trong trường hợp này, bạn sẽ được cấp bộ tham số $(n,e,d)$. Từ (n,e,d)của mình, ta dễ dàng tìm được $\phi(n)$ theo cách sau:
+        - Vì $ed \equiv 1 \pmod{\phi(n)}$ nên tồn tại số k sao cho $ed - k\phi(n) = 1$. Do đó:
+        $$k = \frac{ed-1}{\phi(n)} > \frac{ed-1}{n}$$
+        - Vậy ta sẽ brute-force số $k$ từ $\frac{ed-1}{n}$ trở lên, tính ngược lại $\phi(n) = \frac{ed-1}{k}$, cho đến khi thu được kết quả $\phi(n)$ là số nguyên. Có $\phi(n)$ ta dễ dàng tính được Private Key của victim:
+        $$d_{victim} = e_{victim}^{-1} \bmod \phi(n)$$
+    - Kịch bản 2: External Attack.
+        - Lỗ hổng: dùng cùng một số $n$. Giả sử Alice và Bob dùng cùng một số $n$ để tạo các key, như vậy, $(n, e_{1})$ là public key của Alice và $(n, e_{2})$ là public key của Bob với $gcd(e_{1}, e_{2}) = 1$. Chris gửi cùng một số m cho cả Alice và Bob, tức $c_{1} = m^{e_{1}} \bmod n, c_{2} = m^{e_{2}} \bmod n$.
 
-    - Giả sử Eve muốn biết số m mà Chris đã gửi cho Alice và Bob. Do $gcd(e_{1}, e_{2}) = 1$ nên sẽ tồn tại 2 số $r, s$ sao cho $e_{1}r + e_{2}s = 1$. Khi đó Eve có thể tính được $m$ bằng cách tính $c_{1}^rc_{2}^s ≡ (m^{e_{1}})^r(m^{e_{2}})^s ≡ m^{e_{1}r + e_{2}s} ≡ m \bmod n$.
+        - Giả sử Eve muốn biết số m mà Chris đã gửi cho Alice và Bob. Do $gcd(e_{1}, e_{2}) = 1$ nên sẽ tồn tại 2 số $r, s$ sao cho $e_{1}r + e_{2}s = 1$. Khi đó Eve có thể tính được $m$ bằng cách tính $c_{1}^rc_{2}^s ≡ (m^{e_{1}})^r(m^{e_{2}})^s ≡ m^{e_{1}r + e_{2}s} ≡ m \bmod n$.
   - c. Hastad's broadcast attack (Small CRT-exponent): 
     - Lỗ hổng: số $e$ nhỏ và bằng số người nhận. Giả sử Alice gửi số $m$ cho 3 người Bob, Chris và David, public exponent của mỗi người là $e_{1} = e_{2} = e_{3} = 3$ và tất cả các số modulus $n_{i}$ đều đôi một coprime. Nói cách khác, $c_{1} ≡ m^{3} \bmod n_{1}, c_{2} ≡ m^{3} \bmod n_{2}, c_{3} ≡ m^{3} \bmod n_{3}$. Khi đó Eve có thể đoán được $m$ bằng cách áp dụng định lý thặng dư Trung Hoa (Chinese Remainder Theorem – CRT):
     - Do $n_{1}, n_{2}, n_{3}$ đôi một coprime, ta có hệ:  
