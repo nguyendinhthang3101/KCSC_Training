@@ -358,9 +358,11 @@ c3 = 153550549273508133036268584334039166230588590592527775544799102200926129253
 
 - Ta thấy đây là dạng bài Hastad’s Broadcast attack, flag được mã hoá nhiều lần với số mũ nhỏ $(e = 3)$, ta có:
 
-$$m^3 ≡ c_{1} \bmod n_{1}$$
-$$m^3 ≡ c_{2} \bmod n_{2}$$
-$$m^3 ≡ c_{3} \bmod n_{3}$$
+  $$m^3 ≡ c_{1} \bmod n_{1}$$
+  
+  $$m^3 ≡ c_{2} \bmod n_{2}$$
+  
+  $$m^3 ≡ c_{3} \bmod n_{3}$$
 
 - Áp dụng Định lý phần dư Trung Hoa (crt) ta có thể tính ra được $m^3$ và từ đó có thể lấy được flag:
 
