@@ -187,7 +187,7 @@ $$
 $$
 
 - Server sẽ thực hiện decrypt:
- $$h = (cr^{e}) \bmod n = (m^{e}r^{e})^{d} = (m^{ed}r^{ed}) \bmod n = mr \bmod n $$
+ $$h = (cr^{e})^{d} \bmod n = (m^{e}r^{e})^{d} = (m^{ed}r^{ed}) \bmod n = mr \bmod n $$
 
 $$
 \implies m = \frac{h}{r} \bmod n
