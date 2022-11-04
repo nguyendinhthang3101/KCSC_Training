@@ -121,9 +121,13 @@ h = 3612692976642120159289859839079646204709218948829489946761135882006875955914
 - Nhìn qua source thì có vẻ đây là hệ mã ElGamal nhưng đã chỉnh sửa một chút, mình chỉ cần chú ý đến line 17,18:
 
 $$s = h^y \bmod p$$
+
 $$ c_{1} = gy \bmod p$$
+
 $$ c_{2} = ms \bmod p$$
+
 $$\implies y = c_{1}g^{-1} \bmod p$$
+
 $$\implies m = c_{2}s^{-1} \bmod p$$
 
 ``sol.py``
@@ -197,6 +201,7 @@ N = 2545820099203050973374012365187182716817969473756474189181701376341053383113
 - Mình có thể khôi phục lại $p$ bằng cách lấy $gcd(c_{1} - c_{2}, N)$ vì:
 
 $$c_{1} = [(p^{e_{1}} \bmod N) + m] \bmod N $$
+
 $$c_{2} = [(p^{e_{2}} \bmod N) + m] \bmod N$$
 
 $$\implies c_{1} - c_{2} \equiv p^{e_{1}} - p^{e_{2}} \pmod N$$
