@@ -67,7 +67,9 @@ $$P_{i} = E_{K}(C{i-1}) \oplus C_{i}$$
 - Có thể được tính trước
 
 $$C_{j} = P_{j} \oplus O_{j}$$
+
 $$P_{j} = C_{j} \oplus O_{j}$$
+
 $$O_{j} = E_{K}(I_{j}),I_{j} = O_{j-1},I_{0} = IV$$
 
 ![image](image15.png)
