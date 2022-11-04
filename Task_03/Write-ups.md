@@ -2,7 +2,7 @@
 ## Cryptography
 
 ### 1. Crypto 1
-- Đề bài cho 1 đoạn mã ở phần mô tả: ;aNHI9fO_#5s\R@77&n.0geE-78liI+AkQ^1IG>)6rPj.8kh3(68g;F6o-Ja=u$
+- Đề bài cho 1 đoạn mã ở phần mô tả: ``;aNHI9fO_#5s\R@77&n.0geE-78liI+AkQ^1IG>)6rPj.8kh3(68g;F6o-Ja=u$``
 - Mình thử ném lên tool CyberChef thì tool auto decode base85 cho mình
 
 ![image](image1.png)
