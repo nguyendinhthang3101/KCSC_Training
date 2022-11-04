@@ -27,6 +27,7 @@
 - Sử dụng véc tơ ban đầu (IV) để bắt đầu quá trình mã hóa (giải mã)
 
 $$C_{i}  = E_{K} (P_{i} \oplus C_{i - 1}), C_{0} = IV$$
+
 $$P_{i} = D_{K}(C_{i}) \oplus C_{i - 1} , C_{0} = IV$$
 
 -  Dùng khi: Mã hóa dữ liệu lớn, xác thực
@@ -48,6 +49,7 @@ $$P_{i} = D_{K}(C_{i}) \oplus C_{i - 1} , C_{0} = IV$$
 - Được dùng cho mã hóa dữ liệu dòng, xác thực
 
 $$C_{i} = E_{K}(C_{i-1}) \oplus P_{i} , C_{0}  = IV$$
+
 $$P_{i} = E_{K}(C{i-1}) \oplus C_{i}$$
 
 ![image](image13.png)
