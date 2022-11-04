@@ -59,7 +59,7 @@ $$K_{n} = PC_{-2}(C_{n}D_{n})$$
     + $L_{i} = R_{i-1}$ .
     + $R_{i} = L_{i-1} \oplus f(R_{i-1}, K_{i})$ ( $K_{i}$ là khóa được sinh ra trong quá trình tạo khóa, và ở mỗi lần lập là 1 khóa khác nhau)
 
-- Giai đoạn 3 : Sau 16 lần mã hóa, ta thu được $R_{16}L_{16}$, áp dụng hàm hoán vị kết thúc FP ( inverse Initial Permutation ) ta thu được bản mã Y với Y=FP($R_{16}L_{16}$)
+- Giai đoạn 3 : Sau 16 lần mã hóa, ta thu được $R_{16}L_{16}$, áp dụng hàm hoán vị kết thúc FP ( inverse Initial Permutation ) ta thu được bản mã Y với $Y=FP(R_{16}L_{16})$
 
 ![image](image24.png)
 
