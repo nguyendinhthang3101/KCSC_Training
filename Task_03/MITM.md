@@ -45,7 +45,7 @@ def pad(msg, block_size):
 
      $$ E_{K_{1}}(P) =  D_{K_{2}}(C)$$
     
-- Ở vế trái mình sẽ tiến hành brute-force $2^{56}  \text{  } K_{1}$, ở vế phải mình cũng sẽ tiến hành brute-force $2^{56}  \text{  } K_{2} $ cho tới khi thỏa mãn phương trình trên và chỉ có 1 cặp khóa duy nhất $(K_{1}, K_{2})$ thỏa mãn.
+- Ở vế trái mình sẽ tiến hành brute-force $2^{56}  \text{  } K_{1}$, ở vế phải mình cũng sẽ tiến hành brute-force $2^{56}  \text{  } K_{2}$ cho tới khi thỏa mãn phương trình trên và chỉ có 1 cặp khóa duy nhất $(K_{1}, K_{2})$ thỏa mãn.
 - Độ phức tạp của MITM Attack trong trường hợp này là $2^{56} + 2^{56} = 2^{57}$ nhanh hơn rất nhiều so với brute-force theo cách thông thường $(2^{56}2^{56} = 2^{112})$
 - Với cách tấn công MITM này thì 2DES không an toàn hơn so với DES( $2^{57}$ so với $2^{56}$)
 
